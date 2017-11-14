@@ -1,5 +1,9 @@
 package com.bhuvanesh.utils;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import org.jongo.Jongo;
 
 import com.bhuvanesh.constants.AppConstants;
@@ -35,4 +39,14 @@ public class AppUtils {
 		return uniqueId.seq;
 	}
 	
+	public static <T> List<T> iteratorToList(Iterator<T> itr) {
+		List<T> list = new ArrayList();
+		
+		if (itr != null) {
+			while(itr.hasNext()) {
+				list.add(itr.next());
+			}
+		}
+		return list;
+	}
 }

@@ -1,5 +1,7 @@
 package com.bhuvanesh.services;
 
+import java.util.List;
+
 import com.bhuvanesh.dao.IClientDao;
 import com.bhuvanesh.daoImpl.ClientDaoImpl;
 import com.bhuvanesh.vo.BaseResponse;
@@ -15,6 +17,10 @@ public class ClientServices {
 	
 	public BaseResponse deleteClient(long id) {
 		return dao.deleteClient(id);
+	}
+	
+	public List<Client> getClientList(String sortBy, int from) {
+		return dao.getClientList(sortBy, from);
 	}
 	
 }

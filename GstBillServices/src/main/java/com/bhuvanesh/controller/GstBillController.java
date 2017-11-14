@@ -1,5 +1,7 @@
 package com.bhuvanesh.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,7 +18,6 @@ import com.bhuvanesh.vo.Employee;
 public class GstBillController {
 
 	EmployeeServices services = new EmployeeServices();
-	
 	ClientServices cServices = new ClientServices();
 	
 	@RequestMapping(value = "/saveEmp", method = RequestMethod.POST, headers = "Accept=application/json")
@@ -30,6 +31,8 @@ public class GstBillController {
 		return services.getEmp(age);
 	}
 	
+	
+	
 	@RequestMapping(value = "/updateClient", method = RequestMethod.POST, headers = "Accept=application/json")
 	public BaseResponse updateClientDetails(@RequestBody Client emp) {
 		return cServices.updateClientDetails(emp);
@@ -39,5 +42,9 @@ public class GstBillController {
 	public BaseResponse deleteClient(@RequestParam(value = "clientId") long id) {
 		return cServices.deleteClient(id);
 	}	 
-	
+
+	@RequestMapping(value = "/getClientList", method = RequestMethod.GET, headers = "Accept=application/json")
+	public List<Client> getClientList(@RequestParam(value = "sortBy") String sortBy, @RequestParam(value = "from") int from) {
+		return cServices.getClientList(sortBy, from);
+	}	
 }

@@ -37,9 +37,8 @@ public class ClientDaoImpl implements IClientDao {
 
 	@Override
 	public List<Client> getClientList(String sortBy, int from) {
-		Iterator clientIterator = new Jongo(MongoUtils.getDB()).getCollection(MongoConstants.COLLECTION_CLIENT)
+		Iterator<Client> clientIterator = new Jongo(MongoUtils.getDB()).getCollection(MongoConstants.COLLECTION_CLIENT)
 				.find().sort("{firstName : 1}").limit(from).skip(from > 10 ? from : 0).as(Client.class).iterator();
-		return null;
+		return AppUtils.iteratorToList(clientIterator);
 	}
-
 }
