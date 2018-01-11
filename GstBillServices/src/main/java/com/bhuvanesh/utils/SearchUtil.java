@@ -7,5 +7,10 @@ public class SearchUtil {
 //		return "/^" + queryText + "/i";
 		return "^"+queryText+"(?i)";
 	}
+	
+	public static String splitSearchWords(String query) {
+		return query.replaceAll("+", " ");
+	}
 
+	
 }
