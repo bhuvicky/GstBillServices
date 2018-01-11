@@ -6,7 +6,7 @@ public class MongoConstants {
 	
 	
 	// Collection Name
-	public static final String COLLECTION_EMPLOYEE_DETIALS = "EmployeeDetails" /*"TestEmpDetails"*/;
 	public static final String COLLECTION_CLIENT = "client";
+	public static final String COLLECTION_PRODUCT = "product";
 	public static final String COLLECTION_COUNTER = "counter";
 }

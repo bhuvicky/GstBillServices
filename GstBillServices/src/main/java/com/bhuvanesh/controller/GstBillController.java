@@ -9,42 +9,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bhuvanesh.services.ClientServices;
-import com.bhuvanesh.services.EmployeeServices;
 import com.bhuvanesh.vo.BaseResponse;
 import com.bhuvanesh.vo.Client;
-import com.bhuvanesh.vo.Employee;
+import com.bhuvanesh.vo.ClientListRequest;
 
 @RestController
 public class GstBillController {
 
-	EmployeeServices services = new EmployeeServices();
-	ClientServices cServices = new ClientServices();
-	
-	@RequestMapping(value = "/saveEmp", method = RequestMethod.POST, headers = "Accept=application/json")
-	public BaseResponse saveEmpDetails(@RequestBody Employee emp) {
-		return services.saveEmpDetails(emp);
-	}
-	
-	@RequestMapping(value = "/getEmp",  method = RequestMethod.GET, headers = "Accept=application/json")
-	public Employee getEmpForAge(@RequestParam(value = "age") int age) {
-		System.out.println("log controller hit");
-		return services.getEmp(age);
-	}
-	
-	
-	
+	ClientServices clientServices = new ClientServices();
+			
 	@RequestMapping(value = "/updateClient", method = RequestMethod.POST, headers = "Accept=application/json")
 	public BaseResponse updateClientDetails(@RequestBody Client emp) {
-		return cServices.updateClientDetails(emp);
+		return clientServices.updateClientDetails(emp);
 	}
 	
 	@RequestMapping(value = "/deleteClient", method = RequestMethod.DELETE, headers = "Accept=application/json")
 	public BaseResponse deleteClient(@RequestParam(value = "clientId") long id) {
-		return cServices.deleteClient(id);
+		return clientServices.deleteClient(id);
 	}	 
 
-	@RequestMapping(value = "/getClientList", method = RequestMethod.GET, headers = "Accept=application/json")
-	public List<Client> getClientList(@RequestParam(value = "sortBy") String sortBy, @RequestParam(value = "from") int from) {
-		return cServices.getClientList(sortBy, from);
+	@RequestMapping(value = "/getClientList", method = RequestMethod.POST, headers = "Accept=application/json")
+	public List<Client> getClientList(@RequestBody ClientListRequest request) {
+		return clientServices.getClientList(request);
 	}	
 }

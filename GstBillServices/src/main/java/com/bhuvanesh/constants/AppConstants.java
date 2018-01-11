@@ -9,4 +9,6 @@ public class AppConstants {
 	
 	public static final int STATUS_CODE_ERROR = 404;
 	public static final String RESPONSE_MSG_ERROR = "Something went wrong. Please try after some time.";
+	
+	public static final int PAGE_LIMIT = 10;
 }

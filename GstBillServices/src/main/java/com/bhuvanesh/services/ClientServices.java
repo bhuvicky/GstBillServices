@@ -6,6 +6,7 @@ import com.bhuvanesh.dao.IClientDao;
 import com.bhuvanesh.daoImpl.ClientDaoImpl;
 import com.bhuvanesh.vo.BaseResponse;
 import com.bhuvanesh.vo.Client;
+import com.bhuvanesh.vo.ClientListRequest;
 
 public class ClientServices {
 
@@ -19,8 +20,8 @@ public class ClientServices {
 		return dao.deleteClient(id);
 	}
 	
-	public List<Client> getClientList(String sortBy, int from) {
-		return dao.getClientList(sortBy, from);
+	public List<Client> getClientList(ClientListRequest request) {
+		return dao.getClientList(request);
 	}
 	
 }
